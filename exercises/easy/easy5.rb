@@ -214,3 +214,62 @@ def alphabetic_number_sort(array)
 end
 
 p alphabetic_number_sort((0..19).to_a)
+
+separator()
+
+prompt("Exercise 9")
+=begin
+Input: a string
+Output: the inputted string with all consecutive duplicates collapsed
+Logical Ops
+1) will not want to directly mutate the inputted string as I loop through it so will need a new string
+2) loop through the inputted string adding a character to the new string only if it does not equal the next character in the inputted string
+=end
+
+def crunch(string)
+  output = ""
+  counter = 0
+  while counter <= string.size - 1
+    output << string[counter] unless string[counter] == string[counter + 1]
+    counter += 1
+  end
+  output
+end
+
+p crunch('ddaaiillyy ddoouubbllee')
+p crunch('4444abcabccba')
+p crunch('ggggggggggggggg')
+p crunch('a')
+p crunch('')
+
+separator()
+
+prompt("Exercise 10")
+
+puts "It is a different object"
+
+separator()
+
+prompt("Exercise 11")
+=begin
+Input: a positive integer
+OutPut: returns a array of digits contained within the input
+Logical Ops
+1) Use division to systematically break down the input from right to left
+2) Add numbers to the array
+=end
+
+def digit_list(integer)
+  digits = []
+  loop do
+    integer, digit = integer.divmod(10)
+    digits << digit
+    break if integer == 0
+  end
+  digits.reverse
+end
+
+p digit_list(12345)
+p digit_list(7)
+p digit_list(375290)
+p digit_list(444)
