@@ -272,3 +272,10 @@ p include?([1,2,3,4,5], 6)
 p include?([], 3)
 p include?([nil], nil)
 p include?([], nil)
+
+separator()
+
+prompt("Exercise 10")
+puts "Will output a list of the elements with the appropriate ones capitalized due to the each method
+      passing a bunch of direct references to the second array.  They will be mutated by the upcase!
+      method as a result."
