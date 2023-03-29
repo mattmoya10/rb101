@@ -219,5 +219,79 @@ separator()
 
 prompt("Exercise 9")
 =begin
-Input:
-Output:
+Input: an array of strings
+Output: an array of strings contained within the inputted array that are anagrams
+Logical Operations
+1) Use hash to keep track of unique anagram combinations as keys and arrays containing all the instances of
+that anagram as their values
+2) Check through each word in the given array and sort their characters
+3) Check to see if the sorted word exists as a key in the hash
+4) If it does, then push the word to the array that should be its corresponding value
+5) If it does not, then initialize the key with the value of an array containing the word
+6) Print out all arrays(values) of your hash
+=end
+
+words =  ['demo', 'none', 'tied', 'evil', 'dome', 'mode', 'live',
+  'fowl', 'veil', 'wolf', 'diet', 'vile', 'edit', 'tide',
+  'flow', 'neon']
+
+def anagram(array_of_words)
+  anagram_hash = {}
+  array_of_words.each do |word|
+    key = word.chars.sort.join
+    if anagram_hash.has_key?(key)
+      anagram_hash[key].push(word)
+    else
+      anagram_hash[key] = [word]
+    end
+  end
+  anagram_hash.each_value do |value|
+    p value
+  end
+end
+
+anagram(words)
+
+prompt("Exercise 10")
+=begin
+Input: a positive integer
+Output: the sum of its digits
+Logical Operations
+1) Initialize a variable to reference the resulting sum
+2) Use divmod to isolate each of the digits and add it to the sum
+3) Output the sum
+=end
+
+def sum(integer)
+  integer_as_string = integer.to_s
+  numbers = integer_as_string.chars.map {|char| char.to_i}
+  total = 0
+  numbers.each {|num| total += num}
+  total
+end
+
+puts sum(23) == 5
+puts sum(496) == 19
+puts sum(123_456_789) == 45
+
+prompt("Exercise 11")
+=begin
+Input: an array
+Output: an array containing every other element that exists in the inputted array
+Logical Operations
+1) Iterate through the inputted array with map
+2) Track the index, if the index is even, then add to result array
+3) Output resulting array
+=end
+
+def oddities(input_array)
+  result = input_array.select {|element| element if input_array.index(element) % 2 == 0}
+  result
+end
+
+p oddities([2, 3, 4, 5, 6]) == [2, 4, 6]
+p oddities([1, 2, 3, 4, 5, 6]) == [1, 3, 5]
+p oddities(['abc', 'def']) == ['abc']
+p oddities([123]) == [123]
+p oddities([]) == []
+p oddities([1, 2, 3, 4, 1]) == [1, 3, 1]
